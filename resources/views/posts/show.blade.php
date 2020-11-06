@@ -3,7 +3,7 @@
   @if($post)
     {{ $post->title }}
     @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-      <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
+      <button class="btn btn-secondary" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
     @endif
   @else
     Page does not exist
@@ -41,7 +41,9 @@
   </div>
 </div>
 @if(Auth::guest())
-  <p>You have to Login in order to Comment</p>
+<div class="panel-body">
+  <b>You have to Login in order to Comment</b>
+</div>
 @else
   <div class="panel-body">
     <form method="post" action="/comment/add">

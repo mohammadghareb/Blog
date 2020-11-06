@@ -32,7 +32,7 @@
   </ul>
 </div>
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Latest Posts</h4></div>
+  <div class="panel-heading"><h4>Posts</h4></div>
   <div class="panel-body">
     @if(!empty($latest_posts[0]))
     @foreach($latest_posts as $latest_post)
@@ -47,7 +47,7 @@
   </div>
 </div>
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Latest Comments</h4></div>
+  <div class="panel-heading"><h4>Comments</h4></div>
   <div class="list-group">
     @if(!empty($latest_comments[0]))
     @foreach($latest_comments as $latest_comment)

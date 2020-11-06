@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
   {
     //fetch 5 posts from database which are active and latest
-    $posts = Posts::where('active',1)->orderBy('created_at','desc')->paginate(2);
+    $posts = Posts::where('active',1)->orderBy('created_at','desc')->paginate(5);
     //page heading
     $title = 'Posts';
     //return home.blade.php template from resources/views folder
@@ -157,14 +157,13 @@ class PostController extends Controller
   {
     //
     $post = Posts::find($id);
-    if($post && $post->cover_image != 'noimage.jpg'&& ($post->author_id == $request->user()->id || $request->user()->is_admin()))
+    if($post && ($post->author_id == $request->user()->id || $request->user()->is_admin()))
     {
-      Storage::delete('public/cover_images/'.$post->cover_image);
+      //&& $post->cover_image != 'noimage.jpg'
+      //Storage::delete('public/cover_images/'.$post->cover_image);
       $post->delete();
       $data['message'] = 'Post deleted Successfully';
     }
-
-      // Delete Image
   
     else 
     {

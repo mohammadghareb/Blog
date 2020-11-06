@@ -14,13 +14,11 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', 'PostController@index');
-Route::get('/home', ['as' => 'home', 'uses' => 'PostController@index']);
+Route::get('/home', 'PostController@index');
 
-//authentication
-// Route::resource('auth', 'Auth\AuthController');
-// Route::resource('password', 'Auth\PasswordController');
+
 Route::get('/logout', 'UserController@logout');
-
+// The url will  include "/auth/" whenever i interact with auth pages.
 Route::group(['prefix' => 'auth'], function () {
   Auth::routes();
 });
@@ -39,8 +37,6 @@ Route::middleware(['auth'])->group(function () {
   Route::get('delete/{id}', 'PostController@destroy');
   // display user's all posts
   Route::get('my-all-posts', 'UserController@user_posts_all');
-  // display user's drafts
-  Route::get('my-drafts', 'UserController@user_posts_draft');
   // add comment
   Route::post('comment/add', 'CommentController@store');
   // delete comment
@@ -52,4 +48,4 @@ Route::get('user/{id}', 'UserController@profile')->where('id', '[0-9]+');
 // display list of posts
 Route::get('user/{id}/posts', 'UserController@user_posts')->where('id', '[0-9]+');
 // display single post
-Route::get('/{slug}', ['as' => 'post', 'uses' => 'PostController@show'])->where('slug', '[A-Za-z0-9-_]+');
+Route::get('/{slug}', 'PostController@show')->where('slug', '[A-Za-z0-9-_]+');

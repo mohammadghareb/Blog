@@ -16,7 +16,7 @@ There is no post till now. Login and write a new post now!!!
         <div class="col-md-8 col-sm-8">
             <h3><a href="{{ url('/'.$post->slug) }}">  {{ $post->title }}</a></h3>
             @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-            <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
+            <button class="btn btn-secondary" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
             @endif
             <small>{{ $post->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a></small>
             <article>
