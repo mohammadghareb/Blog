@@ -13,7 +13,6 @@ class Posts extends Migration
      */
     public function up()
   {
-    // blog table
     Schema::create('posts', function (Blueprint $table) {
       $table->id();
       $table->unsignedBigInteger('author_id');

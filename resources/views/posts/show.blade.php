@@ -3,7 +3,8 @@
   @if($post)
     {{ $post->title }}
     @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-      <button class="btn btn-secondary" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
+      <a href="{{ url('edit/'.$post->slug)}}" class="btn btn-primary" style="float: right">Edit Post</a>
+
     @endif
   @else
     Page does not exist

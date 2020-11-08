@@ -13,39 +13,26 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'PostController@index');
+Route::get('/', 'PostController@index')->name('home');
 Route::get('/home', 'PostController@index');
 
 
 Route::get('/logout', 'UserController@logout');
-// The url will  include "/auth/" whenever i interact with auth pages.
 Route::group(['prefix' => 'auth'], function () {
   Auth::routes();
 });
 
-// check for logged in user
 Route::middleware(['auth'])->group(function () {
-  // show new post form
   Route::get('new-post', 'PostController@create');
-  // save new post
   Route::post('new-post', 'PostController@store');
-  // edit post form
   Route::get('edit/{slug}', 'PostController@edit');
-  // update post
   Route::post('update', 'PostController@update');
-  // delete post
   Route::get('delete/{id}', 'PostController@destroy');
-  // display user's all posts
   Route::get('my-all-posts', 'UserController@user_posts_all');
-  // add comment
   Route::post('comment/add', 'CommentController@store');
-  // delete comment
   Route::post('comment/delete/{id}', 'CommentController@distroy');
 });
 
-//users profile
 Route::get('user/{id}', 'UserController@profile')->where('id', '[0-9]+');
-// display list of posts
 Route::get('user/{id}/posts', 'UserController@user_posts')->where('id', '[0-9]+');
-// display single post
 Route::get('/{slug}', 'PostController@show')->where('slug', '[A-Za-z0-9-_]+');

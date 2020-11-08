@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
-  //restricts columns from modifying
   protected $guarded = [];
 
   // posts has many comments

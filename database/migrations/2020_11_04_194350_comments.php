@@ -13,7 +13,6 @@ class Comments extends Migration
      */
     public function up()
     {
-      //id, on_blog, from_user, body, at_time
       Schema::create('comments', function (Blueprint $table) {
         $table->id();
         $table->unsignedBigInteger('on_post');
