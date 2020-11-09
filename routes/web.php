@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', 'PostController@index')->name('home');
-Route::get('/home', 'PostController@index');
+Route::get('/home', 'PostController@index')->name('New_Home');
 
 
 Route::get('/logout', 'UserController@logout');

@@ -84,7 +84,7 @@
       </div>
       @endif
      
-      @if (request()->route()->named('home'))
+      @if (request()->route()->named('home') || request()->route()->named('New_Home') )
       <div id="myCarousel" class="carousel slide" > 
    <ul class="carousel-indicators">
      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
