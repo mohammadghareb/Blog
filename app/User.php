@@ -50,6 +50,10 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Comments', 'from_user');
     }
+    public function likes()
+    {
+        return $this->hasMany(Likes::class);
+    }
   
     public function can_post()
     {

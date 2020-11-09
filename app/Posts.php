@@ -13,6 +13,10 @@ class Posts extends Model
   {
     return $this->hasMany('App\Comments', 'on_post');
   }
+  public function likes()
+    {
+        return $this->hasMany(Likes::class);
+    }
   
   // returns the instance of the user who is author of that post
   public function author()

@@ -17,9 +17,8 @@ Edit Post
       {!! old('body') !!}
     </textarea>
   </div>
-
   <input  type="file" id="cover_image"  name="cover_image" >
-<br>
+  <br>
   @if($post->active == '1')
   <input type="submit" name='publish' class="btn btn-success" value = "Update"/>
   @endif
